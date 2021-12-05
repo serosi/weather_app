@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css"
+    />
+    <link rel="stylesheet" href="./assets/css/style.css" />
+    <title>Weather Dashboard</title>
+  </head>
+
+  <body>
+    <div class="card-body text-center text-white bg-primary">
+      <h1>Weather Dashboard</h1>
+    </div>
+
+    <div class="container">
+      <div class="row">
+        <div class="col-3 search-section">
+            <div class="col-12">
+                <h3>Search for a city: </h3>
+                <input
+                    class="form-control search-input input-lg"
+                    type="search"
+                    placeholder="Paris"
+                    aria-label="Paris"
+                />
+                <button
+                    class="btn my-1 btn-block bg-primary text-white search-btn"
+                    type="submit"
+                >
+                Search
+                </button>
+            </div>
+
+            <div class="card" >
+              <ul class="list-group list-group-flush search-history"></ul>
+            </div>
+        </div>
+
+        <div class="col">
+          <div class="card" class = "currendt-card">
+            <img class="card-img" src="" alt="Card image">
+            <div class="card-img-overlay">
+
+              <div class="row">
+                <div class="col-lg-4">
+                  <h4 class="current-day"></h4>
+                </div>
+  
+                <div class="col-lg-6">
+                  <img class="current-icon" src=""></img>
+                </div>
+              </div>
+              <p class="card-text">
+                  <h6 class="current-info">Temperature: <span class="currentTemp"></span></h6>
+                  <h6 class="current-info">Humidity: <span class="currentHumidity"></span></h6>
+                  <h6 class="current-info">Wind Speed: <span class="currentWindSpeed"></span></h6>
+                  <h6 class="current-info">UV Index: <span class="currentUV badge"></span></h6>
+              </p>
+            </div>
+            </div>
+            
+
+          <div class="row">
+              <div class="col-12">
+              </br>
+                  <h5>5-Day Forecast:</h5>
+                  <div class="row">
+                      <div class="col">
+                          <div class="card bg-info text-white">
+                            <img class="card-img-top" id ="img1" src="" alt="Card image cap">
+
+                            <div class="card-body">
+                              <h5 class="forecastDay1"></h5>
+                              <img class="current-icon1" src=""></img>
+                              <h6 class="card-text">Temp:<span class="forecastTemp1"></span></h6>
+                              <h6 class="card-text">Wind:<span class="forecastWind1"></span></h6>
+                              <h6 class="card-text">Humidity:<span class="forecastHumidity1"></span></h6>
+                            </div>
+                          </div>
+                      </div>
+                      <div class="col" >
+                          <div class="card bg-info text-white">
+                            <img class="card-img-top" id ="img2" src="" alt="Card image cap">
+                            <div class="card-body">
+                              <h5 class="forecastDay2"></h5>
+                              <img class="current-icon2" src=""></img>
+                              <h6 class="card-text">Temp:<span class="forecastTemp2"></span></h6>
+                              <h6 class="card-text">Wind:<span class="forecastWind2"></span></h6>
+                              <h6 class="card-text">Humidity:<span class="forecastHumidity2"></span></h6>
+                            </div>
+                          </div>
+                      </div>
+
+                      <div class="col">
+                          <div class="card bg-info text-white">
+                            <img class="card-img-top" id ="img3" src="" alt="Card image cap">
+                            <div class="card-body">
+                              <h5 class="forecastDay3"></h5>
+                              <img class="current-icon3" src=""></img>
+                              <h6 class="card-text">Temp:<span class="forecastTemp3"></span></h6>
+                              <h6 class="card-text">Wind:<span class="forecastWind3"></span></h6>
+                              <h6 class="card-text">Humidity:<span class="forecastHumidity3"></span></h6>
+                            </div>
+                          </div>
+                      </div>
+                      <div class="col">
+                          <div class="card bg-info text-white">
+                            <img class="card-img-top" id ="img4" src="" alt="Card image cap">
+                            <div class="card-body">
+                              <h5 class="forecastDay4"></h5>
+                              <img class="current-icon4" src=""></img>
+                              <h6 class="card-text">Temp:<span class="forecastTemp4"></span></h6>
+                              <h6 class="card-text">Wind:<span class="forecastWind4"></span></h6>
+                              <h6 class="card-text">Humidity:<span class="forecastHumidity4"></span></h6>
+                            </div>
+                          </div>
+                      </div>
+                      <div class="col" >
+                          <div class="card bg-info text-white">
+                            <img class="card-img-top" id ="img5" src="" alt="Card image cap">
+                            <div class="card-body">
+                              <h5 class="forecastDay5"></h5>
+                              <img class="current-icon5" src=""></img>
+                              <h6 class="card-text">Temp:<span class="forecastTemp5"></span></h6>
+                              <h6 class="card-text">Wind:<span class="forecastWind5"></span></h6>
+                              <h6 class="card-text">Humidity:<span class="forecastHumidity5"></span></h6>
+                            </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+    <script src="./assets/js/script.js"></script>
+  </body>
+</html>

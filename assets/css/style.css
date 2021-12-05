@@ -1,0 +1,39 @@
+.container {
+  padding-top: 50px;
+}
+
+.search-section {
+  margin-left: -70px;
+}
+
+.current-day {
+  margin-left: 10px;
+  margin-top: 15px;
+  font-weight: bold;
+}
+
+.current-info {
+  margin: 10px;
+}
+
+.badge-high {
+  background-color: orange;
+}
+
+.badge-extreme {
+  background-color: darkviolet;
+}
+
+.card-img{
+  max-height: 250px;;
+}
+
+.current-icon{
+  max-height: 50px;
+  max-width: 50px;
+}
+
+.card-img-top1, card-img-top2{
+  max-width: 50px;
+  max-height: 50px;
+}

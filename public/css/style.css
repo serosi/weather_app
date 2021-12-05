@@ -1,0 +1,120 @@
+* {
+    box-sizing: border-box;
+    margin: 0%;
+    padding: 0%;
+  }
+  .body {
+    padding: 0;
+    margin: 0;
+  }
+  /*Navigation Bar/Header*/
+  .navGradient {
+    background-image: linear-gradient(
+      to right,
+      rgb(51, 97, 185),
+      rgb(32, 10, 76)
+    );
+  }
+  h1 {
+    font-size: 2rem;
+    font-weight: bold;
+    color: white;
+    text-align: center;
+    padding: 1rem;
+  }
+  /*my container*/
+  .myContainer {
+    margin: 1rem;
+    max-width: 98%;
+  }
+  /* search div */
+  .searchCity {
+    padding: 0;
+  }
+  input {
+    padding: 0.5rem;
+  }
+  .searchCityDiv input,
+  .searchBtn {
+    width: 90%;
+  }
+  .searchCityDiv label {
+    color: black;
+    font-size: 2rem;
+    font-weight: bold;
+  }
+  .searchCityDiv input {
+    border: 1px solid rgb(174, 174, 174);
+    height: 2.5rem;
+    border-radius: 5px;
+    margin-top: 1rem;
+  }
+  .searchBtn {
+    color: white;
+    background-color: rgb(80, 152, 230);
+    margin-top: 1rem;
+  }
+  hr {
+    width: 90%;
+  }
+  .searchedCitiesList {
+    list-style: none;
+    margin: 0%;
+    padding: 0;
+    width: 90%;
+  }
+  
+  .cityBtn {
+    background-color: rgb(174, 174, 174);
+    margin-top: 1rem;
+    text-align: center;
+    margin-left: 0%;
+    padding: 0.5rem;
+    border-radius: 5px;
+    width: 100%;
+  }
+  /* searched city list */
+  
+  /* current weather */
+  .weatherInfo {
+    padding-left: 0;
+    padding-right: 10;
+  }
+  .currentWeather {
+    margin-top: 0.5rem;
+    border: 1px solid black;
+  }
+  /* Five Day forecast*/
+  .dailyForecastDate {
+    font-weight: bold;
+  }
+  .forecastDay {
+    background-color: rgb(142, 155, 168);
+    color: white;
+    margin-right: 1rem;
+  }
+  .forecastHeading {
+    font-weight: bold;
+    margin: 1rem 0;
+  }
+  
+  /*uv index*/
+  .favorable,
+  .severe {
+    padding: 0.25rem;
+    border-radius: 5px;
+    color: white;
+  }
+  .favorable {
+    background-color: green;
+  }
+  .moderate {
+    background-color: yellow;
+    padding: 0.25rem;
+    border-radius: 5px;
+    color: black;
+  }
+  .severe {
+    background-color: red;
+  }
+  
