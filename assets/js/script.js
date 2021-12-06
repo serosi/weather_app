@@ -51,7 +51,7 @@ var defaultCity = function (apiUrl) {
 var displayCurrentCity = function (data) {
   var tempF = (((data.main.temp - 273.15) * 9) / 5 + 32).toFixed(2);
 
-  if(data.weather[0].main === "Clouds"){
+  /*if(data.weather[0].main === "Clouds"){
     $(".card-img" ).attr("src", "./assets/background/bg_day_partlycloudy.png");
     $(".current-icon").attr("src","./assets/icons/icon_cloudy.png");
   }
@@ -61,8 +61,9 @@ var displayCurrentCity = function (data) {
   }else if(data.weather[0].main === "Sunny"){
     $(".card-img" ).attr("src", "./assets/background/bg_day_sunny.png");
     $(".current-icon").attr("src","./assets/icons/icon_sunny.png");
-  }
+  }*/
 
+ //$(".card-img" ).attr("src", "./assets/background/bg_day_partlycloudy.png");
 
   $(".current-day").text(data.name + " (" + moment().format("MM/D/YYYY") + ")");
   $(".currentTemp").text(tempF + " °F");
@@ -153,7 +154,7 @@ var displayForecast = function (city) {
             $(".card-img-top" ).attr("src", "./assets/background/bg_day_snow.png");
           }*/
 
-          displayCardImg(data.list[i],i);
+          //displayCardImg(data.list[i],i);
           $(".forecastDay" + i).text(moment().add(i, "d").format("MM/D/YYYY"));
           $(".current-icon" + i).attr(
             "src",
