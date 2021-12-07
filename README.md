@@ -1,6 +1,6 @@
 # Weather-Dashboard
 
-The sixth weekly challenge of the boot camp.
+A weather forecast website for our CS2430 class.
 
 ## INFORMATION:
 
@@ -25,4 +25,6 @@ https://ting-hu.github.io/Weather-Dashboard/
 
 ## Contribution
 
-Build by Xueting Hu
+JavaScript and API functionality by Xueting Hu
+HTML & layout by Cal Kershner
+Backgrounds & icons by Maggie Nordquist
