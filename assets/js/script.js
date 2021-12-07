@@ -1,3 +1,6 @@
+//var s = ['Chicago'];
+var searchedCities = JSON.parse(localStorage.getItem('searchedCities')) || [];
+
 $(document).ready(function () {
   var apiUrl = "https://api.openweathermap.org/data/2.5/weather?q=chicago&appid=818154f9875973e95a27ec8b0fc7191b";
   defaultCity(apiUrl);
@@ -131,7 +134,18 @@ var displayForecast = function (city) {
 
   fetch(apiUrl).then(function (response) {
     if (response.ok) {
+
       //storeLocal(city);
+      /*if(checkIfCityExists(city) === false){
+        s.push(city);
+        //console.log("false"+s);
+      }*/
+      if(checkIfCityExists(city) === false){
+        searchedCities.push(city);
+        localStorage.setItem("searchedCities", JSON.stringify(searchedCities));
+      }
+      
+      
 
       response.json().then(function (data) {  
         for (let i = 1; i < 6; i++) {
@@ -189,42 +203,32 @@ var displayForecast = function (city) {
   });
 };
 
-/*var storeLocal = function (userInput) {
-  localStorage.setItem("record", JSON.stringify(userInput));
-  var liEl = document.createElement("li");
-  liEl.classList.add("list-group-item", "list-group-item-action");
-  liEl.id = userInput;
-  liEl.textContent = userInput;
-  liEl.addEventListener("click", (e) => {
-    if (e.target.tagName === "LI") {
-      getUrl(e.target.textContent);
+var searchedCitiesButton = function () {
+    for(let i = 0; i< searchedCities.length; i++){
+      
+      $("#"+ i).addEventListener("click", (e) => {
+        if (e.target.tagName === "LI") {
+          getUrl(e.target.searchedCities[i]);
+        }
+      });
+      //document.querySelector(".search-history").appendChild(liEl);
     }
-  });
-  document.querySelector(".search-history").appendChild(liEl);
-};*/
-
-let storedCities = JSON.parse(localStorage.getItem('storedCities')) || [];
-
-checkLocalStorage = () => {
-   storedCities = JSON.parse(localStorage.getItem('storedCities')) || [];
+    
 };
 
-
-var displaySearchHistory = function (cityName) {
-  checkLocalStorage();
-  for (let i = 0; i < localStorage.length; i++) {
+var displaySearchHistory = function () {
+  for (let i = 0; i < searchedCities.length; i++) {
     var liEl = $(
-      `<button type='button' class='list-group-item list-group-item-action' id='${cityName}'>${cityName}</li>`
+      `<button type='button' class='list-group-item list-group-item-action' id='${searchedCities[i]}'>${searchedCities[i]}</li>`
     );
     liEl.appendTo(".search-history");
   }
 };
 
-var checkIfCityButtonExists = function(userInput){
-  checkLocalStorage();
+var checkIfCityExists = function(city){
   let cityExists = false;
-  for (i = 0; i < storedCities.length; i++) {
-     if (city === storedCities[i]) {
+  for (i = 0; i < searchedCities.length; i++) {
+     if (city === searchedCities[i]) {
         cityExists = true;
         return cityExists;
      }
@@ -232,3 +236,4 @@ var checkIfCityButtonExists = function(userInput){
   return cityExists;
 }
 
+displaySearchHistory();
