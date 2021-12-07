@@ -12,7 +12,6 @@ $(".search-btn").click(function (event) {
     var apiUrl = "https://api.openweathermap.org/data/2.5/weather?q=chicago&appid=818154f9875973e95a27ec8b0fc7191b";
   } else {
     var apiUrl = "https://api.openweathermap.org/data/2.5/weather?q=" + userInput + "&appid=818154f9875973e95a27ec8b0fc7191b";
-    //displaySearchHistory();
   }
 
   defaultCity(apiUrl);
@@ -131,7 +130,7 @@ var displayForecast = function (city) {
       if(checkIfCityExists(city) === false){
         searchedCities.push(city);
         localStorage.setItem("searchedCities", JSON.stringify(searchedCities));
-        //displaySearchHistory();
+        displaySearchHistory();
       }
       
       response.json().then(function (data) {  
@@ -192,6 +191,8 @@ var displayForecast = function (city) {
 
 
 var displaySearchHistory = function () {
+  document.querySelector(".search-history").innerHTML = ""; 
+
   for (let i = 0; i < searchedCities.length; i++) {
     var liEl = $(
       `<button type='button' class='list-group-item list-group-item-action' id='${searchedCities[i]}'>${searchedCities[i]}</li>`
@@ -203,7 +204,6 @@ var displaySearchHistory = function () {
         getUrl(searchedCities[i]);
     });
   }
-  
 };
 
 var checkIfCityExists = function(city){
