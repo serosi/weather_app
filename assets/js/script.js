@@ -50,22 +50,48 @@ var defaultCity = function (apiUrl) {
 
 var displayCurrentCity = function (data) {
   var tempF = (((data.main.temp - 273.15) * 9) / 5 + 32).toFixed(2);
+  console.log(moment().format('LT')[6])
 
-  if(data.weather[0].main == "Clouds"){
-    $(".card-img" ).attr("src", "./assets/background/bg_day_partlycloudy.png");
-    $(".current-icon").attr("src","./assets/icons/icon_cloudy.png");
-  }else if(data.weather[0].main == "Snow"){
-    $(".card-img" ).attr("src", "./assets/background/bg_day_snow.png");
-    $(".current-icon").attr("src","./assets/icons/icon_snow.png");
-  }else if(data.weather[0].main == "Sunny"){
-    $(".card-img" ).attr("src", "./assets/background/bg_day_sunny.png");
-    $(".current-icon").attr("src","./assets/icons/icon_sunny.png");
-  }else if(data.weather[0].main == "Rain"){
-    $(".card-img" ).attr("src", "./assets/background/bg_day_rain.png");
-    $(".current-icon").attr("src","./assets/icons/icon_rain.png");
-  }else if(data.weather[0].main == "Clear"){
-    $(".card-img" ).attr("src", "./assets/background/bg_night_clear.png");
-    $(".current-icon").attr("src","./assets/icons/icon_clear.png");
+  if(moment().format('LT')[6] === 'P'){
+    if(data.weather[0].main === "Clouds"){
+      $(".card-img" ).attr("src", "./assets/background/bg_night_partlycloudy.png");
+      $(".current-icon").attr("src","./assets/icons/icon_cloudy.png");
+    }else if(data.weather[0].main === "Snow"){
+      $(".card-img" ).attr("src", "./assets/background/bg_night_snow.png");
+      $(".current-icon").attr("src","./assets/icons/icon_snow.png");
+    }else if(data.weather[0].main === "Sunny"){
+      $(".card-img" ).attr("src", "./assets/background/bg_night_sunny.png");
+      $(".current-icon").attr("src","./assets/icons/icon_sunny.png");
+    }else if(data.weather[0].main === "Rain"){
+      $(".card-img" ).attr("src", "./assets/background/bg_night_rain.png");
+      $(".current-icon").attr("src","./assets/icons/icon_rain.png"); //No rain icon 
+    }else if(data.weather[0].main === "Clear"){
+      $(".card-img" ).attr("src", "./assets/background/bg_night_clear.png");
+      $(".current-icon").attr("src","./assets/icons/icon_sunny.png");
+    }else{
+      $("#bg" + i).attr("src", "./assets/background/bg_night_mist.png");
+      $(".current-icon").attr("src","./assets/icons/icon_mist.png");
+    }
+  }else if(moment().format('LT')[6] === 'A'){
+    if(data.weather[0].main === "Clouds"){
+      $(".card-img" ).attr("src", "./assets/background/bg_day_partlycloudy.png");
+      $(".current-icon").attr("src","./assets/icons/icon_cloudy.png");
+    }else if(data.weather[0].main === "Snow"){
+      $(".card-img" ).attr("src", "./assets/background/bg_day_snow.png");
+      $(".current-icon").attr("src","./assets/icons/icon_snow.png");
+    }else if(data.weather[0].main === "Sunny"){
+      $(".card-img" ).attr("src", "./assets/background/bg_day_sunny.png");
+      $(".current-icon").attr("src","./assets/icons/icon_sunny.png");
+    }else if(data.weather[0].main === "Rain"){
+      $(".card-img" ).attr("src", "./assets/background/bg_day_rain.png");
+      $(".current-icon").attr("src","./assets/icons/icon_rain.png"); 
+    }else if(data.weather[0].main === "Clear"){
+      $(".card-img" ).attr("src", "./assets/background/bg_day_clear.png");
+      $(".current-icon").attr("src","./assets/icons/icon_sunny.png");
+    }else{
+      $("#bg" + i).attr("src", "./assets/background/bg_day_mist.png");
+      $(".current-icon").attr("src","./assets/icons/icon_mist.png");
+    }
   }
 
   $(".current-day").text(data.name + " (" + moment().format("MM/D/YYYY") + ")");
@@ -77,17 +103,15 @@ var displayCurrentCity = function (data) {
 };
 
 var getUVIndex = function (lat, lon) {
-  var apiUrl =
-    "https://api.openweathermap.org/data/2.5/uvi?lat=" +
-    lat +
-    "&lon=" +
-    lon +
-    "&appid=818154f9875973e95a27ec8b0fc7191b";
+  var apiUrl = "https://api.openweathermap.org/data/2.5/uvi?lat=" + lat + "&lon=" + lon + "&appid=818154f9875973e95a27ec8b0fc7191b";
+
   fetch(apiUrl).then(function (response) {
     if (response.ok) {
       response.json().then(function (data) {
         $(".currentUV").text(data.value);
+        console.log(data);
         if (data.value < 2 || data.value === 2) {
+          console.log('in')
           $(".currentUV").addClass("badge-sucess");
         } else if (data.value > 2 && data.value < 5) {
           $(".currentUV").addClass("badge-warning");
@@ -112,40 +136,57 @@ var getUVIndex = function (lat, lon) {
 };
 
 var displayForecast = function (city) {
-  var apiUrl =
-    "https://api.openweathermap.org/data/2.5/forecast?q=" +
-    city +
-    "&appid=818154f9875973e95a27ec8b0fc7191b";
+  var apiUrl = "https://api.openweathermap.org/data/2.5/forecast?q=" + city + "&appid=818154f9875973e95a27ec8b0fc7191b";
 
   fetch(apiUrl).then(function (response) {
     if (response.ok) {
       storeLocal(city);
-      response.json().then(function (data) {
-        
-        for (let i = 1; i < 6; i++) {
-          var tempF = (
-            ((data.list[i].main.temp - 273.15) * 9) / 5 +
-            32
-          ).toFixed(2);
 
-          // Display the weather background and icons
-          if(data.list[i].weather[0].main === "Clouds"){
+      response.json().then(function (data) {  
+        for (let i = 1; i < 6; i++) {
+          var tempF = (((data.list[i].main.temp - 273.15) * 9) / 5 + 32).toFixed(2);
+
+          if(moment().format('LT')[6] === 'P'){
+            if(data.list[i].weather[0].main === "Clouds"){
             $("#bg" + i).attr("src", "./assets/background/bg_night_partlycloudy.png");
             $("#icon" + i).attr("src", "./assets/icons/icon_partlycloudy.png");
           }else if(data.list[i].weather[0].main === "Rain"){
-             $("#bg" + i).attr("src", "./assets/background/bg_day_rain.png");
-             $("#icon" + i).attr("src","./assets/icons/icon_partlycloudy.png");
+             $("#bg" + i).attr("src", "./assets/background/bg_night_rain.png");
+             $("#icon" + i).attr("src","./assets/icons/icon_rain.png"); 
           }else if(data.list[i].weather[0].main === "Clear"){
-            $("#bg" + i).attr("src", "./assets/background/bg_night_clear.png");
-            $("#icon" + i).attr("src","./assets/icons/icon_clear.png");
+            $("#bg" + i).attr("src", "./assets/background/bg_night_clear.png"); //No Day clear
+            $("#icon" + i).attr("src","./assets/icons/icon_sunny.png");
           }else if(data.list[i].weather[0].main === "Snow"){
-            $("#bg" + i).attr("src", "./assets/background/bg_day_snow.png");
+            $("#bg" + i).attr("src", "./assets/background/bg_night_snow.png");
             $("#icon" + i).attr("src","./assets/icons/icon_snow.png");
           }else if(data.list[i].weather[0].main === "Sunny"){
-            $("#bg" + i).attr("src", "./assets/background/bg_day_sunny.png");
+            $("#bg" + i).attr("src", "./assets/background/bg_night_clear.png");
             $("#icon" + i).attr("src","./assets/icons/icon_sunny.png");
+          }else{
+            $("#bg" + i).attr("src", "./assets/background/bg_night_mist.png");
+            $("#icon" + i).attr("src","./assets/icons/icon_mist.png");
           }
-        
+          }else if(moment().format('LT')[6] === 'A'){
+            if(data.list[i].weather[0].main === "Clouds"){
+              $("#bg" + i).attr("src", "./assets/background/bg_day_partlycloudy.png");
+              $("#icon" + i).attr("src", "./assets/icons/icon_partlycloudy.png");
+            }else if(data.list[i].weather[0].main === "Rain"){
+               $("#bg" + i).attr("src", "./assets/background/bg_day_rain.png");
+               $("#icon" + i).attr("src","./assets/icons/icon_rain.png"); 
+            }else if(data.list[i].weather[0].main === "Clear"){
+              $("#bg" + i).attr("src", "./assets/background/bg_day_clear.png");
+              $("#icon" + i).attr("src","./assets/icons/icon_sunny.png");
+            }else if(data.list[i].weather[0].main === "Snow"){
+              $("#bg" + i).attr("src", "./assets/background/bg_day_snow.png");
+              $("#icon" + i).attr("src","./assets/icons/icon_snow.png");
+            }else if(data.list[i].weather[0].main === "Sunny"){
+              $("#bg" + i).attr("src", "./assets/background/bg_day_clear.png");
+              $("#icon" + i).attr("src","./assets/icons/icon_sunny.png");
+            }else{
+              $("#bg" + i).attr("src", "./assets/background/bg_day_mist.png");
+              $("#icon" + i).attr("src","./assets/icons/icon_mist.png");
+            }
+          }
 
           $(".forecastDay" + i).text(moment().add(i, "d").format("MM/D/YYYY"));
           $(".forecastTemp" + i).text(tempF + " °F");
