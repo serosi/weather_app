@@ -25,6 +25,6 @@ https://ting-hu.github.io/Weather-Dashboard/
 
 ## Contribution
 
-JavaScript and API functionality by Xueting Hu/n
-HTML & layout by Cal Kershner/n
-Backgrounds & icons by Maggie Nordquist
+JavaScript and API functionality by Xueting Hu  
+HTML & layout by Cal Kershner  
+Backgrounds & icons by Maggie Nordquist  
