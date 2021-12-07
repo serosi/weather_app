@@ -45,9 +45,10 @@ var defaultCity = function (apiUrl) {
 
 var displayCurrentCity = function (data) {
   var tempF = (((data.main.temp - 273.15) * 9) / 5 + 32).toFixed(2);
-  console.log(moment().format('LT')[5])
+  //console.log(moment().format('LT')[5])
 
-  if(moment().format('LT')[5] === 'P'){
+  //if(moment().format('LT')[5] === 'P'){
+  if(dayOrNight() === false ){
     if(data.weather[0].main === "Clouds"){
       $(".card-img" ).attr("src", "./assets/background/bg_night_partlycloudy.png");
       $(".current-icon").attr("src","./assets/icons/icon_cloudy.png");
@@ -67,7 +68,7 @@ var displayCurrentCity = function (data) {
       $(".card-img").attr("src", "./assets/background/bg_night_mist.png");
       $(".current-icon").attr("src","./assets/icons/icon_mist.png");
     }
-  }else if(moment().format('LT')[5] === 'A'){
+  }else if(dayOrNight() === true ){
     if(data.weather[0].main === "Clouds"){
       $(".card-img" ).attr("src", "./assets/background/bg_day_partlycloudy.png");
       $(".current-icon").attr("src","./assets/icons/icon_cloudy.png");
@@ -104,7 +105,6 @@ var getUVIndex = function (lat, lon) {
     if (response.ok) {
       response.json().then(function (data) {
         $(".currentUV").text(data.value);
-        console.log(data);
         if (data.value < 2.01) {
           $(".currentUV").addClass("badge-sucess");
         } else if (data.value > 2 && data.value < 5.01) {
@@ -120,6 +120,18 @@ var getUVIndex = function (lat, lon) {
     }
   });
 };
+
+var dayOrNight = function(){
+  var flag = false;
+  if(moment().hour() > 6 && moment().hour() < 20){
+    flag = true;
+    return flag;
+  }
+  else{
+    flag = false;
+    return flag;
+  }
+}
 
 var displayForecast = function (city) {
   var apiUrl = "https://api.openweathermap.org/data/2.5/forecast?q=" + city + "&appid=818154f9875973e95a27ec8b0fc7191b";
@@ -137,7 +149,10 @@ var displayForecast = function (city) {
         for (let i = 1; i < 6; i++) {
           var tempF = (((data.list[i].main.temp - 273.15) * 9) / 5 + 32).toFixed(2);
 
-          if(moment().format('LT')[5] === 'P'){
+          //console.log("Something " + moment().hour());
+
+          //if(moment().format('LT')[5] === 'P'){
+          if(dayOrNight() === false ){
             if(data.list[i].weather[0].main === "Clouds"){
             $("#bg" + i).attr("src", "./assets/background/bg_night_partlycloudy.png");
             $("#icon" + i).attr("src", "./assets/icons/icon_partlycloudy.png");
@@ -145,7 +160,7 @@ var displayForecast = function (city) {
              $("#bg" + i).attr("src", "./assets/background/bg_night_rain.png");
              $("#icon" + i).attr("src","./assets/icons/icon_rain.png"); 
           }else if(data.list[i].weather[0].main === "Clear"){
-            $("#bg" + i).attr("src", "./assets/background/bg_night_clear.png"); //No Day clear
+            $("#bg" + i).attr("src", "./assets/background/bg_night_clear.png"); 
             $("#icon" + i).attr("src","./assets/icons/icon_sunny.png");
           }else if(data.list[i].weather[0].main === "Snow"){
             $("#bg" + i).attr("src", "./assets/background/bg_night_snow.png");
@@ -157,7 +172,8 @@ var displayForecast = function (city) {
             $("#bg" + i).attr("src", "./assets/background/bg_night_mist.png");
             $("#icon" + i).attr("src","./assets/icons/icon_mist.png");
           }
-          }else if(moment().format('LT')[5] === 'A'){
+          }else if(dayOrNight() === true){
+          //else if(moment().format('LT')[5] === 'A'){
             if(data.list[i].weather[0].main === "Clouds"){
               $("#bg" + i).attr("src", "./assets/background/bg_day_partlycloudy.png");
               $("#icon" + i).attr("src", "./assets/icons/icon_partlycloudy.png");
