@@ -21,7 +21,7 @@ A weather search and weather forecast.
 
 ## Website
 
-https://ting-hu.github.io/Weather-Dashboard/
+https://serosi.github.io/weather_app/
 
 ## Contribution
 
