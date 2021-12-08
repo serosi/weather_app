@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+body {
+background-image: url("backgroundLandscape.jpg");
+background-repeat: no-repeat;
+background-size: cover;
+}
+img {
+  
+}
+div.main {
+  position: absolute;
+  top: 40px;
+  left: 50px;
+  width: 800px;
+  height: 640px;
+  border: 1px solid #000000;
+  background: rgba(0, 0, 0, 0.5)
+}
+div.text1{
+  position: absolute;
+  top: 120px;
+  left: 440px;
+  width: 400px;
+  height: 640px;
+}
+div.tempMain{
+  position: absolute;
+  top: 40px;
+  left: 440px;
+  width: 400px;
+  height: 640px;
+  font-size: 80px;
+}
+div.mapMain{
+  position: absolute;
+  top: 300px;
+  left: 70px;
+  width: 800px;
+  height: 640px;
+}
+div.secondary1 {
+  position: absolute;
+  top: 40px;
+  left: 940px;
+  width: 360px;
+  height: 160px;
+  border: 1px solid #000000;
+  background: rgba(0, 0, 0, 0.5)
+}
+div.tempSecondary1{
+  position: absolute;
+  top: 40px;
+  left: 1050px;
+  width: 400px;
+  height: 640px;
+  font-size: 60px;
+}
+div.secondary2 {
+  position: absolute;
+  top: 240px;
+  left: 940px;
+  width: 360px;
+  height: 160px;
+  border: 1px solid #000000;
+  background: rgba(0, 0, 0, 0.5)
+}
+div.tempSecondary2{
+  position: absolute;
+  top: 240px;
+  left: 1050px;
+  width: 400px;
+  height: 640px;
+  font-size: 60px;
+}
+div.secondary3 {
+  position: absolute;
+  top: 440px;
+  left: 940px;
+  width: 360px;
+  height: 160px;
+  border: 1px solid #000000;
+  background: rgba(0, 0, 0, 0.5)
+}
+div.tempSecondary3{
+  position: absolute;
+  top: 440px;
+  left: 1050px;
+  width: 400px;
+  height: 640px;
+  font-size: 60px;
+}
+</style>
+</head>
+<body>
+	<div class="main">
+		<h1> <img src="cloudy_icon.png" width="300" height= "300"></h1>
+	</div>
+	<div class="mapMain">
+		<img src="PlattevilleIMG.png" width="515" height= "349">
+	</div>
+	<div class="tempMain" style="color:white">
+		62<sup>o</sup>
+	</div>
+	<div class="text1">
+		<p style="color:white">Their will be a slight chance of rain from 1pm - 4pm</p>
+		<p style="color:white">Maybe bring and umbrella along to stay dry</p>
+	</div>
+	<div class="secondary1" style="color:white">
+		<img src="icon_snow.png" width="100" height= "100">
+		Tuesday will have snow so remember to wear something warm
+	</div>
+	<div class="tempSecondary1" style="color:white">
+		31<sup>o</sup>
+	</div>
+	<div class="secondary2" style="color:white">
+		<img src="icon_sunny.png" width="100" height= "100">
+		Wednesday there will be clear skies
+	</div>
+	<div class="tempSecondary2" style="color:white">
+		54<sup>o</sup>
+	</div>
+	<div class="secondary3" style="color:white">
+		<img src="cloudy_icon.png" width="100" height= "100">
+		Thursday will be cloudy
+	</div>
+	<div class="tempSecondary3" style="color:white">
+		96<sup>o</sup>
+	</div>
+</body>
+</html>
