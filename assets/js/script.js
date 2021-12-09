@@ -50,50 +50,50 @@ var displayCurrentCity = function (data) {
   //if(moment().format('LT')[5] === 'P'){
   if(dayOrNight() === false ){
     if(data.weather[0].main === "Clouds"){
-      $(".card-img" ).attr("src", "./assets/background/bg_night_partlycloudy.png");
+      document.body.style.backgroundImage = "url('./assets/background/bg_night_partlycloudy.png')";
       $(".current-icon").attr("src","./assets/icons/icon_cloudy.png");
     }else if(data.weather[0].main === "Snow"){
-      $(".card-img" ).attr("src", "./assets/background/bg_night_snow.png");
+      document.body.style.backgroundImage = "url('./assets/background/bg_night_snow.png')";
       $(".current-icon").attr("src","./assets/icons/icon_snow.png");
     }else if(data.weather[0].main === "Sunny"){
-      $(".card-img" ).attr("src", "./assets/background/bg_night_sunny.png");
+    document.body.style.backgroundImage = "url('./assets/background/bg_night_sunny.png')";
       $(".current-icon").attr("src","./assets/icons/icon_sunny.png");
     }else if(data.weather[0].main === "Rain"){
-      $(".card-img" ).attr("src", "./assets/background/bg_night_rain.png");
+    document.body.style.backgroundImage = "url('./assets/background/bg_night_rain.png')";
       $(".current-icon").attr("src","./assets/icons/icon_rain.png"); //No rain icon 
     }else if(data.weather[0].main === "Clear"){
-      $(".card-img" ).attr("src", "./assets/background/bg_night_clear.png");
+      document.body.style.backgroundImage = "url('./assets/background/bg_night_clear.png')";
       $(".current-icon").attr("src","./assets/icons/icon_sunny.png");
     }else{
-      $(".card-img").attr("src", "./assets/background/bg_night_mist.png");
+      document.body.style.backgroundImage = "url('./assets/background/bg_night_mist.png')";
       $(".current-icon").attr("src","./assets/icons/icon_mist.png");
     }
   }else if(dayOrNight() === true ){
     if(data.weather[0].main === "Clouds"){
-      $(".card-img" ).attr("src", "./assets/background/bg_day_partlycloudy.png");
+      document.body.style.backgroundImage = "url('./assets/background/bg_day_partlycloudy.png')";
       $(".current-icon").attr("src","./assets/icons/icon_cloudy.png");
     }else if(data.weather[0].main === "Snow"){
-      $(".card-img" ).attr("src", "./assets/background/bg_day_snow.png");
+      document.body.style.backgroundImage = "url('./assets/background/bg_day_snow.png')";
       $(".current-icon").attr("src","./assets/icons/icon_snow.png");
     }else if(data.weather[0].main === "Sunny"){
-      $(".card-img" ).attr("src", "./assets/background/bg_day_sunny.png");
+      document.body.style.backgroundImage = "url('./assets/background/bg_day_sunny.png')";
       $(".current-icon").attr("src","./assets/icons/icon_sunny.png");
     }else if(data.weather[0].main === "Rain"){
-      $(".card-img" ).attr("src", "./assets/background/bg_day_rain.png");
+      document.body.style.backgroundImage = "url('./assets/background/bg_day_rain.png')";
       $(".current-icon").attr("src","./assets/icons/icon_rain.png"); 
     }else if(data.weather[0].main === "Clear"){
-      $(".card-img" ).attr("src", "./assets/background/bg_day_clear.png");
+      document.body.style.backgroundImage = "url('./assets/background/bg_day_clear.png')";
       $(".current-icon").attr("src","./assets/icons/icon_sunny.png");
     }else{
-      $(".card-img").attr("src", "./assets/background/bg_day_mist.png");
+      document.body.style.backgroundImage = "url('./assets/background/bg_day_mist.png')";
       $(".current-icon").attr("src","./assets/icons/icon_mist.png");
     }
   }
 
   $(".current-day").text(data.name + " (" + moment().format("MM/D/YYYY") + ")");
-  $(".currentTemp").text(tempF + " °F");
-  $(".currentHumidity").text(data.main.humidity);
-  $(".currentWindSpeed").text(data.wind.speed);
+  $(".currentTemp").text(tempF + "°F");
+  $(".currentHumidity").text(data.main.humidity + "%");
+  $(".currentWindSpeed").text(data.wind.speed + " MPH");
 
   getUVIndex(data.coord.lat, data.coord.lon);
 };
@@ -106,7 +106,7 @@ var getUVIndex = function (lat, lon) {
       response.json().then(function (data) {
         $(".currentUV").text(data.value);
         if (data.value < 2.01) {
-          $(".currentUV").addClass("badge-sucess");
+          $(".currentUV").addClass("badge-success");
         } else if (data.value > 2 && data.value < 5.01) {
           $(".currentUV").addClass("badge-warning");
         } else if (data.value > 5 && data.value < 7.01) {
@@ -196,9 +196,9 @@ var displayForecast = function (city) {
           }
 
           $(".forecastDay" + i).text(moment().add(i, "d").format("MM/D/YYYY"));
-          $(".forecastTemp" + i).text(tempF + " °F");
-          $(".forecastWind" + i).text(" " + data.list[i].wind.speed);
-          $(".forecastHumidity" + i).text(" " + data.list[i].main.humidity);
+          $(".forecastTemp" + i).text(tempF + "°F");
+          $(".forecastWind" + i).text(" " + data.list[i].wind.speed + " MPH");
+          $(".forecastHumidity" + i).text(" " + data.list[i].main.humidity + "%");
         }
       });
     }
@@ -233,4 +233,7 @@ var checkIfCityExists = function(city){
   return cityExists;
 }
 
-displaySearchHistory();
+
+
+
+// displaySearchHistory();
