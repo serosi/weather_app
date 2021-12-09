@@ -1,24 +1,28 @@
 body {
-  background-image: url("./assets/background/bg_day_mist.png");
+  background-image: url("");
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
   color: white;
   font-family: Helvetica;
+  width: 93%;
 }
 
 h3 {
-  font-size: 1.3vw!important;
+  font-size: 1vw!important;
 }
 
 #wrapper {
   width: 100%;
   margin: auto;
   max-width: 85%;
+  margin-top: 5%;
+  float: none;
 }
 
 .title {
   text-align: center;
+  padding-top: 4%;
   font-size: 2vw;
   text-shadow: 1px 1px 5px black;
 }
@@ -39,13 +43,13 @@ h3 {
 .search-input {
   font-size: 1rem;
   font-weight: 400;
-  line-height: 1.5;
+  line-height: 1.6;
   color: #495057;
   background-color: #fff;
   border: 1px solid #ced4da;
   border-radius: 0.25rem;
   transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
-  margin-bottom: 5%;
+  margin-bottom: 3%;
   margin-right: 1%;
 }
 
@@ -68,10 +72,10 @@ h3 {
     color: white;
 }
 
-.day {
+.forecastDay1 {
   text-align: center;
   color: white;
-  font-size: 1.4vw;
+  font-size: 1.6vw;
   padding: 1%;
   text-shadow: 1px 1px 5px black;
   border-radius: 5px;
@@ -155,13 +159,14 @@ h3 {
   color: white;
   width: 95%;
   text-align: left;
-  padding-left: 7%;
+  padding-left: 6%;
   border-radius: 5px;
   text-shadow: 1px 1px 5px black;
   background: rgba(0, 0, 0, 0.4);
   margin-bottom: 5%;
   margin-left: 5%;
   padding-bottom: 1.5%;
+  padding: 3%;
 }
 
 .sub_img {
@@ -201,13 +206,27 @@ img {
 
 @media (max-width: 980px) {
 
+    body {
+    width: 100%;
+    }
+
+    #wrapper {
+    margin-top: none;
+    }
+
   .forecast, .sub_forecast {
     border-radius: 0px;
     float: none;
     margin: auto;
     display: grid;
     width: auto;
+  }
+   .currCity {
+    font-size: 6vw;
+   }
 
+  .forecastDay1 {
+    font-size: 5vw;
   }
 
   h3 {
@@ -237,10 +256,9 @@ img {
 
   .search {
     text-align: center;
-    width: 100%!important;
+    width: 100%;
     margin-bottom: 5%;
-    margin: none!important;
-
+    background: none;
   }
 
   .sub_forecast {
