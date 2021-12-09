@@ -37,7 +37,7 @@ var defaultCity = function (apiUrl) {
         displayForecast(data.name);
       });
     } else {
-      alert("Error");
+      alert("Error: could not find city. Please check that you entered the name correctly.");
     }
   });
 };
@@ -57,13 +57,13 @@ var displayCurrentCity = function (data) {
       $(".current-icon").attr("src","./assets/icons/icon_snow.png");
     }else if(data.weather[0].main === "Sunny"){
     document.body.style.backgroundImage = "url('./assets/background/bg_night_sunny.png')";
-      $(".current-icon").attr("src","./assets/icons/icon_sunny.png");
+      $(".current-icon").attr("src","./assets/icons/icon_clear.png");
     }else if(data.weather[0].main === "Rain"){
     document.body.style.backgroundImage = "url('./assets/background/bg_night_rain.png')";
       $(".current-icon").attr("src","./assets/icons/icon_rain.png"); //No rain icon 
     }else if(data.weather[0].main === "Clear"){
       document.body.style.backgroundImage = "url('./assets/background/bg_night_clear.png')";
-      $(".current-icon").attr("src","./assets/icons/icon_sunny.png");
+      $(".current-icon").attr("src","./assets/icons/icon_clear.png");
     }else{
       document.body.style.backgroundImage = "url('./assets/background/bg_night_mist.png')";
       $(".current-icon").attr("src","./assets/icons/icon_mist.png");
@@ -142,7 +142,6 @@ var displayForecast = function (city) {
       if(checkIfCityExists(city) === false){
         searchedCities.push(city);
         localStorage.setItem("searchedCities", JSON.stringify(searchedCities));
-        displaySearchHistory();
       }
       
       response.json().then(function (data) {  
@@ -205,23 +204,6 @@ var displayForecast = function (city) {
   });
 };
 
-
-var displaySearchHistory = function () {
-  document.querySelector(".search-history").innerHTML = ""; 
-
-  for (let i = 0; i < searchedCities.length; i++) {
-    var liEl = $(
-      `<button type='button' class='list-group-item list-group-item-action' id='${searchedCities[i]}'>${searchedCities[i]}</li>`
-    );
-    liEl.appendTo(".search-history");
-
-    $("#" + searchedCities[i]).click(function(event){
-        event.preventDefault();
-        getUrl(searchedCities[i]);
-    });
-  }
-};
-
 var checkIfCityExists = function(city){
   let cityExists = false;
   for (i = 0; i < searchedCities.length; i++) {
@@ -232,8 +214,3 @@ var checkIfCityExists = function(city){
   };
   return cityExists;
 }
-
-
-
-
-// displaySearchHistory();
