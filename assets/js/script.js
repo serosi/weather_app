@@ -1,4 +1,6 @@
 var searchedCities = JSON.parse(localStorage.getItem('searchedCities')) || [];
+var currentCity = "Chicago";
+$(".currCity").text("Weather for " + currentCity.charAt(0).toUpperCase() + currentCity.slice(1));
 
 $(document).ready(function () {
   var apiUrl = "https://api.openweathermap.org/data/2.5/weather?q=chicago&appid=818154f9875973e95a27ec8b0fc7191b";
@@ -14,6 +16,8 @@ $(".search-btn").click(function (event) {
     var apiUrl = "https://api.openweathermap.org/data/2.5/weather?q=" + userInput + "&appid=818154f9875973e95a27ec8b0fc7191b";
   }
 
+  var currentCity = $(".search-input").val();
+  $(".currCity").text("Weather for " + currentCity.charAt(0).toUpperCase() + currentCity.slice(1));
   defaultCity(apiUrl);
 });
 
@@ -214,3 +218,4 @@ var checkIfCityExists = function(city){
   };
   return cityExists;
 }
+
