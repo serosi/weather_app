@@ -7,6 +7,10 @@ body {
   font-family: Helvetica;
 }
 
+h3 {
+  font-size: 1.3vw!important;
+}
+
 #wrapper {
   width: 100%;
   margin: auto;
@@ -196,12 +200,18 @@ img {
 }
 
 @media (max-width: 980px) {
-  .search, .forecast, .sub_forecast {
+
+  .forecast, .sub_forecast {
+    border-radius: 0px;
     float: none;
     margin: auto;
     display: grid;
     width: auto;
-    margin: 0 auto;
+
+  }
+
+  h3 {
+  font-size: 4vw!important;
   }
 
   .forecast_container {
@@ -209,14 +219,28 @@ img {
   }
 
   .forecast {
+    padding: 5%;
     text-align: center;
     align-items: center;
-    margin-bottom: 5%;
+    margin-bottom: 4%;
+  }
+
+  .left_forecast {
+    margin-top: 8%;
+    margin-bottom: 8%;
+  }
+
+  .detailed_forecast {
+    padding: 5%;
+    margin-bottom: -5%!important;
   }
 
   .search {
     text-align: center;
+    width: 100%!important;
     margin-bottom: 5%;
+    margin: none!important;
+
   }
 
   .sub_forecast {
@@ -233,12 +257,19 @@ img {
     font-size: 4vw;
   }
   .detailed_forecast, .day1, .day2, .day3, .day4, .sub_forecast {
+  width: 100%;
     font-size: 4vw;
     margin: 0 auto;
     float: none;
     margin-bottom: 5%;
     padding-top: 1%;
-    margin-right: 2%;
+
+  }
+
+  .day1, .day2, .day3, .day4 {
+    padding: 5%;
+    padding-left: 10%;
+    border-radius: 0px;
   }
 
   .detailed_forecast {
