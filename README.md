@@ -10,7 +10,7 @@ A weather forecast website for our CS2430 class.
 
 ## Purpose:
 
-A weather search and weather forecast.
+A weather search and weather forecast website. Displays today's forecast as well as the next four days of forecasted weather in a simple, easy-to-read, and aesthetically pleasing format. Scales for mobile.
 
 ## Built With
 
@@ -25,6 +25,6 @@ https://serosi.github.io/weather_app/
 
 ## Contribution
 
-JavaScript and API functionality by Xueting Hu  
-HTML & layout by Cal Kershner  
-Backgrounds & icons by Maggie Nordquist  
+JavaScript, API functionality, city search by Xueting Hu  
+Some HTML & layout by Cal Kershner  
+Backgrounds/icons, some HTML, HTML/JS integration by Maggie Nordquist  
