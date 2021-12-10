@@ -72,7 +72,12 @@ h3 {
     color: white;
 }
 
-.forecastDay1 {
+.current-day{
+  padding-top: 1%;
+  margin-bottom: 2%;
+}
+
+.forecastDay1,.forecastDay2,.forecastDay3,.forecastDay4, .forecastDay5 {
   text-align: center;
   color: white;
   font-size: 1.6vw;
@@ -116,7 +121,6 @@ h3 {
 .right_forecast {
   color: white;
   width: 100%;
-  padding: none;
   text-align: center;
 }
 
@@ -126,6 +130,18 @@ h3 {
 
 .f_val {
   text-align: right;
+}
+
+.current{
+  font-size: 1.2vw;
+  line-height: 1.6;
+  margin-top: 5%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 3%;
+  width: 90%;
+  padding: 1%;
+  text-align: center;
 }
 
 .detailed_forecast {
@@ -149,13 +165,13 @@ h3 {
 
 .sub_forecast {
   color: white;
-  width: 28%
+  width: 28%;
   float: left;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
 }
 
-.day1, .day2, .day3, .day4 {
+.day1, .day2, .day3, .day4, .day5 {
   color: white;
   width: 95%;
   text-align: left;
@@ -225,7 +241,7 @@ img {
     font-size: 6vw;
    }
 
-  .forecastDay1 {
+  .current-day{
     font-size: 5vw;
   }
 
@@ -274,8 +290,9 @@ img {
   .left_forecast {
     font-size: 4vw;
   }
-  .detailed_forecast, .day1, .day2, .day3, .day4, .sub_forecast {
-  width: 100%;
+
+  .detailed_forecast, .day1, .day2, .day3, .day4, .day5, .sub_forecast {
+    width: 100%;
     font-size: 4vw;
     margin: 0 auto;
     float: none;
@@ -284,7 +301,7 @@ img {
 
   }
 
-  .day1, .day2, .day3, .day4 {
+  .day1, .day2, .day3, .day4, .day5 {
     padding: 5%;
     padding-left: 10%;
     border-radius: 0px;
@@ -296,4 +313,9 @@ img {
   .message {
     font-size: 4vw;
   }
+
+  .forecastDay1,.forecastDay2,.forecastDay3,.forecastDay4,.forecastDay5 {
+    font-size: 30px;
+  }
+
 }

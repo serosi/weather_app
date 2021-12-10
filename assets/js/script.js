@@ -1,6 +1,4 @@
 var searchedCities = JSON.parse(localStorage.getItem('searchedCities')) || [];
-var currentCity = "Chicago";
-$(".currCity").text("Weather for " + currentCity.charAt(0).toUpperCase() + currentCity.slice(1));
 
 $(document).ready(function () {
   var apiUrl = "https://api.openweathermap.org/data/2.5/weather?q=chicago&appid=818154f9875973e95a27ec8b0fc7191b";
@@ -16,8 +14,6 @@ $(".search-btn").click(function (event) {
     var apiUrl = "https://api.openweathermap.org/data/2.5/weather?q=" + userInput + "&appid=818154f9875973e95a27ec8b0fc7191b";
   }
 
-  var currentCity = $(".search-input").val();
-  $(".currCity").text("Weather for " + currentCity.charAt(0).toUpperCase() + currentCity.slice(1));
   defaultCity(apiUrl);
 });
 
@@ -49,9 +45,7 @@ var defaultCity = function (apiUrl) {
 
 var displayCurrentCity = function (data) {
   var tempF = (((data.main.temp - 273.15) * 9) / 5 + 32).toFixed(2);
-  //console.log(moment().format('LT')[5])
 
-  //if(moment().format('LT')[5] === 'P'){
   if(dayOrNight() === false ){
     if(data.weather[0].main === "Clouds"){
       document.body.style.backgroundImage = "url('./assets/background/bg_night_partlycloudy.png')";
@@ -60,10 +54,10 @@ var displayCurrentCity = function (data) {
       document.body.style.backgroundImage = "url('./assets/background/bg_night_snow.png')";
       $(".current-icon").attr("src","./assets/icons/icon_snow.png");
     }else if(data.weather[0].main === "Sunny"){
-    document.body.style.backgroundImage = "url('./assets/background/bg_night_sunny.png')";
+      document.body.style.backgroundImage = "url('./assets/background/bg_night_sunny.png')";
       $(".current-icon").attr("src","./assets/icons/icon_clear.png");
     }else if(data.weather[0].main === "Rain"){
-    document.body.style.backgroundImage = "url('./assets/background/bg_night_rain.png')";
+      document.body.style.backgroundImage = "url('./assets/background/bg_night_rain.png')";
       $(".current-icon").attr("src","./assets/icons/icon_rain.png"); //No rain icon 
     }else if(data.weather[0].main === "Clear"){
       document.body.style.backgroundImage = "url('./assets/background/bg_night_clear.png')";
@@ -94,7 +88,7 @@ var displayCurrentCity = function (data) {
     }
   }
 
-  $(".current-day").text(data.name + " (" + moment().format("MM/D/YYYY") + ")");
+  $(".current-day").text(data.name + "  " + moment().format("MM/D/YYYY"));
   $(".currentTemp").text(tempF + "°F");
   $(".currentHumidity").text(data.main.humidity + "%");
   $(".currentWindSpeed").text(data.wind.speed + " MPH");
@@ -146,54 +140,39 @@ var displayForecast = function (city) {
       if(checkIfCityExists(city) === false){
         searchedCities.push(city);
         localStorage.setItem("searchedCities", JSON.stringify(searchedCities));
+        displaySearchHistory();
       }
       
       response.json().then(function (data) {  
         for (let i = 1; i < 6; i++) {
           var tempF = (((data.list[i].main.temp - 273.15) * 9) / 5 + 32).toFixed(2);
 
-          //console.log("Something " + moment().hour());
-
-          //if(moment().format('LT')[5] === 'P'){
           if(dayOrNight() === false ){
             if(data.list[i].weather[0].main === "Clouds"){
-            $("#bg" + i).attr("src", "./assets/background/bg_night_partlycloudy.png");
             $("#icon" + i).attr("src", "./assets/icons/icon_partlycloudy.png");
           }else if(data.list[i].weather[0].main === "Rain"){
-             $("#bg" + i).attr("src", "./assets/background/bg_night_rain.png");
              $("#icon" + i).attr("src","./assets/icons/icon_rain.png"); 
           }else if(data.list[i].weather[0].main === "Clear"){
-            $("#bg" + i).attr("src", "./assets/background/bg_night_clear.png"); 
             $("#icon" + i).attr("src","./assets/icons/icon_sunny.png");
           }else if(data.list[i].weather[0].main === "Snow"){
-            $("#bg" + i).attr("src", "./assets/background/bg_night_snow.png");
             $("#icon" + i).attr("src","./assets/icons/icon_snow.png");
           }else if(data.list[i].weather[0].main === "Sunny"){
-            $("#bg" + i).attr("src", "./assets/background/bg_night_clear.png");
             $("#icon" + i).attr("src","./assets/icons/icon_sunny.png");
           }else{
-            $("#bg" + i).attr("src", "./assets/background/bg_night_mist.png");
             $("#icon" + i).attr("src","./assets/icons/icon_mist.png");
           }
           }else if(dayOrNight() === true){
-          //else if(moment().format('LT')[5] === 'A'){
             if(data.list[i].weather[0].main === "Clouds"){
-              $("#bg" + i).attr("src", "./assets/background/bg_day_partlycloudy.png");
               $("#icon" + i).attr("src", "./assets/icons/icon_partlycloudy.png");
             }else if(data.list[i].weather[0].main === "Rain"){
-               $("#bg" + i).attr("src", "./assets/background/bg_day_rain.png");
                $("#icon" + i).attr("src","./assets/icons/icon_rain.png"); 
             }else if(data.list[i].weather[0].main === "Clear"){
-              $("#bg" + i).attr("src", "./assets/background/bg_day_clear.png");
               $("#icon" + i).attr("src","./assets/icons/icon_sunny.png");
             }else if(data.list[i].weather[0].main === "Snow"){
-              $("#bg" + i).attr("src", "./assets/background/bg_day_snow.png");
               $("#icon" + i).attr("src","./assets/icons/icon_snow.png");
             }else if(data.list[i].weather[0].main === "Sunny"){
-              $("#bg" + i).attr("src", "./assets/background/bg_day_clear.png");
               $("#icon" + i).attr("src","./assets/icons/icon_sunny.png");
             }else{
-              $("#bg" + i).attr("src", "./assets/background/bg_day_mist.png");
               $("#icon" + i).attr("src","./assets/icons/icon_mist.png");
             }
           }
@@ -208,6 +187,22 @@ var displayForecast = function (city) {
   });
 };
 
+var displaySearchHistory = function () {
+  document.querySelector(".search-history").innerHTML = ""; 
+
+  for (let i = 0; i < searchedCities.length; i++) {
+    var liEl = $(
+      `<button type='button' class='list-group-item list-group-item-action' id='${searchedCities[i]}'>${searchedCities[i]}</li>`
+    );
+    liEl.appendTo(".search-history");
+
+    $("#" + searchedCities[i]).click(function(event){
+        event.preventDefault();
+        getUrl(searchedCities[i]);
+    });
+  }
+};
+
 var checkIfCityExists = function(city){
   let cityExists = false;
   for (i = 0; i < searchedCities.length; i++) {
@@ -219,3 +214,4 @@ var checkIfCityExists = function(city){
   return cityExists;
 }
 
+displaySearchHistory();

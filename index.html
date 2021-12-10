@@ -19,25 +19,25 @@
                 placeholder="Chicago"
                 aria-label="Chicago"/>
         <button class="btn my-1 btn-block bg-primary text-white search-btn" type="submit">Search</button>
+        <div class="card" >
+            <ul class="list-group list-group-flush search-history"></ul>
+        </div>
     </div>
-</div>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
-<script src="./assets/js/script.js"></script>
+</div>
 
 <div class="forecast">
 
     <div class="forecast_container">
-        <h2 class = "title"><span class="currCity"></span></h2>
-        <h2 class="forecastDay1"></h2>
+
+        <h2 class = "current-day"></h2>
 
         <div class="left_forecast">
             <img class="current-icon" style="width:150px" src="">
         </div>
 
         <div class="right_forecast">
-            <div class="detailed_forecast">
+            <div class="current">
                 <h6 class="f_desc">Temperature: <span class="currentTemp"></span></h6>
                 <h6 class="f_desc">Wind Speed: <span class="currentWindSpeed"></span></h6>
                 <h6 class="f_desc">Humidity: <span class="currentHumidity"></span></h6>
@@ -49,27 +49,34 @@
 
 <div class="sub_forecast">
     <div class="day1">
+        <h5 class="forecastDay1"></h5>
+        <img class="sub_img" id="icon1" style="width:100px" src="">
+        <h6 class="card-text">Temp: <span class="forecastTemp1"></span></h6>
+        <h6 class="card-text">Wind: <span class="forecastWind1"></span></h6>
+        <h6 class="card-text">Humidity: <span class="forecastHumidity1"></span></h6>
+    </div>
+    <div class=day2>
         <h5 class="forecastDay2"></h5>
         <img class="sub_img" id="icon2" style="width:100px" src="">
         <h6 class="card-text">Temp: <span class="forecastTemp2"></span></h6>
         <h6 class="card-text">Wind: <span class="forecastWind2"></span></h6>
         <h6 class="card-text">Humidity: <span class="forecastHumidity2"></span></h6>
     </div>
-    <div class=day2>
+    <div class=day3>
         <h5 class="forecastDay3"></h5>
         <img class="sub_img" id="icon3" style="width:100px" src="">
         <h6 class="card-text">Temp: <span class="forecastTemp3"></span></h6>
         <h6 class="card-text">Wind: <span class="forecastWind3"></span></h6>
         <h6 class="card-text">Humidity: <span class="forecastHumidity3"></span></h6>
     </div>
-    <div class=day3>
+    <div class=day4>
         <h5 class="forecastDay4"></h5>
         <img class="sub_img" id="icon4" style="width:100px" src="">
         <h6 class="card-text">Temp: <span class="forecastTemp4"></span></h6>
         <h6 class="card-text">Wind: <span class="forecastWind4"></span></h6>
-        <h6 class="card-text">Humidity: <span class="forecastHumidity4"></span></h6>
+        <h6 class="card-text">Humidity: <span class="forecastHumidity5"></span></h6>
     </div>
-    <div class=day4>
+    <div class=day5>
         <h5 class="forecastDay5"></h5>
         <img class="sub_img" id="icon5" style="width:100px" src="">
         <h6 class="card-text">Temp: <span class="forecastTemp5"></span></h6>
@@ -80,5 +87,8 @@
 
 <br style="clear: left;"/>
 
-</body>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+        <script src="./assets/js/script.js"></script>
+    </body>
 </html>
